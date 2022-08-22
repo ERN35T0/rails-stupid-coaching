@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   # root "articles#index"
   # A simple route to go to http://localhost:3000/ask
   get "ask", to: "questions#ask"
+  # A simple route to go to http://localhost:3000/answer
+  get "answer", to: "questions#answer"
 end

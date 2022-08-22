@@ -9,4 +9,23 @@ class QuestionsController < ApplicationController
       @teams = @teams.select{|team| team.match?(@query.to_s.downcase.gsub(/\s+/, '')) }
     end
   end
+
+  def answer
+    @question = params[:question]
+    @answer = stupid_answer(@question)
+  end
+
+  # If the message is I am going to work, the coach will answer Great!
+# If the message has a question mark ? at the end, the coach will answer Silly question, get dressed and go to work!.
+# Otherwise the coach will answer I don't care, get dressed and go to work!
+  def stupid_answer(question)
+    if question == "I am going to work"
+      "Great!"
+    #bug here
+    elsif question = question.gsub(/\s+/, '?')
+      "Silly question, get dressed and go to work!."
+    else
+      "I don't care, get dressed and go to work!"
+    end
+  end
 end
