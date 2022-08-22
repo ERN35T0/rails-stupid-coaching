@@ -10,10 +10,17 @@
     <%# value botton %>
   <input type="submit" value="Choose!">
 </form>
-
 <ul>
   <%# take instance variable from questions_controller, iterate each teams %>
   <% @teams.each do |team| %>
     <li><%= team.capitalize %></li>
   <% end %>
 </ul>
+<br>
+<div class="coach-form">
+  <form action="/answer">
+    <label for="question">Ask to your coach</label>
+    <input type="text" id="question" name="question" placeholder="today is a day off?">
+    <input type="submit" value="Ask!">
+</form>
+</div>

@@ -12,17 +12,26 @@ class QuestionsController < ApplicationController
 
   def answer
     @question = params[:question]
-    @answer = stupid_answer(@question)
+    # debugger
+    @answer = stupid_answer(@question.to_s)
   end
 
   # If the message is I am going to work, the coach will answer Great!
-# If the message has a question mark ? at the end, the coach will answer Silly question, get dressed and go to work!.
-# Otherwise the coach will answer I don't care, get dressed and go to work!
+  # If the message has a question mark ? at the end, the coach will answer Silly question, get dressed and go to work!.
+  # Otherwise the coach will answer I don't care, get dressed and go to work!
+  private
+
+    # bug here
+    # ActionController::MissingExactTemplate (QuestionsController#answer is missing a template for request formats: text/html)
+    # Solvin problem: I had created a new folder to host answer.html.erb with the name answers.
+    # the path was correct but the controller only points to the questions folder as it is called questions_controller.
+    # The solution was to host answer.html.erb in the questions folder.
+    #another possibility would have been to create a new controller.
   def stupid_answer(question)
     if question == "I am going to work"
       "Great!"
-    #bug here
-    elsif question = question.gsub(/\s+/, '?')
+      #debugger
+    elsif question.end_with?("?")
       "Silly question, get dressed and go to work!."
     else
       "I don't care, get dressed and go to work!"
