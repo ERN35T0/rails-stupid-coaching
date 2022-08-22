@@ -13,3 +13,27 @@
  *= require_tree .
  *= require_self
  */
+
+ body
+	{
+ 		background: #303030;
+ 		color: #ffffff;
+		font-family: 'Open Sans', sans-serif;
+		font-weight: 300;
+		overflow-x: hidden; /* prevent horizontal scrollbar from appearing */
+	}
+
+  h2
+	{
+		text-align: center;
+		font-size: 40px;
+		padding-bottom: 40px;
+	}
+
+  .navbar-navbar
+	{
+		background: #fff;
+		border: none;
+		box-shadow: none;
+		margin: 0 !important;
+	}
